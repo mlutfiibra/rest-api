@@ -1,5 +1,5 @@
 'use strict';
-const bcrypt = require('bcryptjs')
+const Helper = require('../helpers/helper')
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     hooks: {
       beforeCreate(user) {
-        user.password = bcrypt.hashSync(user.password, 10);        
+        user.password = Helper.hashPassword(user.password);        
       },
     }
   });

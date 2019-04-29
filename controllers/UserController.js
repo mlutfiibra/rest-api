@@ -1,6 +1,5 @@
 const { User } = require('../models')
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcryptjs')
+const Helper = require('../helpers/helper')
 
 class UserController {
     static findAll(req, res) {
@@ -77,7 +76,7 @@ class UserController {
         .then(user => {
             if(!user) {
                 res.status(400).json({'msg': 'username/password wrong'})
-            }else if(!bcrypt.compareSync(password, user.password)) {
+            }else if(!Helper.comparePassword(password, user.password)) {
                 res.status(400).json({'msg': 'username/password wrong'})
             }else {
                 const userPayload = {
@@ -86,11 +85,7 @@ class UserController {
                     email: user.email
                 }
 
-                const token = jwt.sign(
-                    userPayload 
-                    , process.env.SECRET,
-                    { expiresIn: '1h' } 
-                );
+                const token = Helper.generateJWT(userPayload);
 
                 res.status(200).json({token})
             }

@@ -8,7 +8,7 @@ class TodoController {
             res.status(200).json(users)
         })
         .catch(err => {
-            console.log(err);
+            // console.log(err);
             res.status(400).json(err)
         })
     }
@@ -67,7 +67,7 @@ class TodoController {
         })
     }
 
-    static update(req, res) {
+    static updateAll(req, res) {
         Todo.findByPk(req.params.id)
         .then(todo=> {
             if(!todo) {
