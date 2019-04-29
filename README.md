@@ -1,5 +1,9 @@
 # REST API Challenge
 
+## Run On: 
+- https://polar-headland-64783.herokuapp.com/
+- http://localhost:3000
+
 ## Dependency
 1. Express
 2. Sequelize
@@ -11,6 +15,7 @@
 ## Todos Endpoints
 
 You must login to access these endpoints:
+
 | Route            | HTTP   | Description                 |
 |:-----------------|:-------|:----------------------------|
 | `/api/todos`     | GET    | Get all the todos info      |
