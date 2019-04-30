@@ -1,6 +1,6 @@
 const { Todo } = require('../models')
 
-module.exports = (req, res, next) => {
+module.exports = (err, req, res, next) => {
     if(req.headers.hasOwnProperty('token')) {
         Todo.findOne({where:{id:req.params.id}})
         .then((todo) => {

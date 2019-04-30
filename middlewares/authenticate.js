@@ -1,6 +1,6 @@
 const Helper = require('../helpers/helper')
 
-module.exports = (req, res, next) => {
+module.exports = (err, req, res, next) => {
     try {
         var decoded = Helper.verifyJWT(req.headers.token);
         req.decoded = decoded
